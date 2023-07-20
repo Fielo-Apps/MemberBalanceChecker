@@ -15,7 +15,7 @@ Package to detect member balance inconsistency.
 
 After the FieloMBC process finishes, the results will be saved in the object `FieloMBC__MemberBalanceStatus__c`
 
-This Object has 6 important fields:
+This Object has the following fields:
 | Field | Description |
 | :---- | ----------- |
 | Member | (Lookup) Id of the member |
