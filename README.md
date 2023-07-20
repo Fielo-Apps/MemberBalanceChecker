@@ -17,7 +17,7 @@ After the FieloMBC process finishes, the results will be saved in the object `Fi
 
 This Object has 6 important fields:
 | Field | Description |
-| :---: | :---------: |
+| :---- | ----------- |
 | Member | (Lookup) Id of the member |
 | Currency | (Lookup) Id of currency |
 | Member Balance | (Decimal) Current Member Balance |
@@ -30,5 +30,5 @@ This Object has 6 important fields:
 
 ## Which Mismatch flag should You use?
 
-**Total Points Mismatch** if you have the entire points history in the database and you have negative accruals or not
-**Balance Mismatch** if you don't have negative accruals
+- **Total Points Mismatch** if you have the entire points history in the database and you have negative accruals or not
+- **Balance Mismatch** if you don't have negative accruals
