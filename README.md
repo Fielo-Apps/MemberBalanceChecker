@@ -2,6 +2,10 @@
 
 Package to detect member balance inconsistency.
 
+## Requirements
+
+- FieloPLT 2.114.61 or newer.
+
 ## How Do You Run FieloMBC?
 
 - Install the latest version: [FieloMBC 1.9.0](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tHY0000000VjbYAE)
