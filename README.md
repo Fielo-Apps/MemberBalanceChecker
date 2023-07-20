@@ -8,4 +8,4 @@ Package to detect member balance inconsistency.
 - Assign the PermissionSet FieloMBCAdmin to your user
 - Access in LEX > App Launcher > FieloMBC > Home
 - Click on Run
-![FieloMBC](image.png)
+![Alt text](image-1.png)
