@@ -32,3 +32,4 @@ This Object has 6 important fields:
 
 - **Total Points Mismatch** if you have the entire points history in the database and you have negative accruals or not
 - **Balance Mismatch** if you don't have negative accruals
+- **Calculated Member Balance** if you want to check if all points were summed correctly
