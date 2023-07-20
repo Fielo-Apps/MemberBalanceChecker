@@ -9,3 +9,13 @@ Package to detect member balance inconsistency.
 - Access in LEX > App Launcher > FieloMBC > Home
 - Click on Run
 ![Alt text](image-1.png)
+- Wait for it to finish
+
+## Reading the Results
+
+After the FieloMBC process finishes, the results will be saved in the object `FieloMBC__MemberBalanceStatus__c`
+
+This Object has 6 important fields:
+| Field | Description |
+| :---: | :---------: |
+| Member | (Lookup) Id of the member |
