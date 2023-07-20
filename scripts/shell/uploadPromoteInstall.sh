@@ -1,6 +1,6 @@
 # !/bin/bash
 
-versionNumber="1.8.0"
+versionNumber="1.9.0"
 
 sf package version create --package 0HoHY000000000u0AA -n "${versionNumber}.1" --installation-key-bypass --code-coverage -w 120 &&
 
