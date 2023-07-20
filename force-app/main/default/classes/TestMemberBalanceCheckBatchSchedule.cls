@@ -104,6 +104,10 @@ public class TestMemberBalanceCheckBatchSchedule {
         Assert.areEqual( 50, mbsMap.get(missMatchBalanceMemberKey).PointsTotalPointsSum__c);
         Assert.areEqual(-50, mbsMap.get(negativeBalanceMemberKey).PointsTotalPointsSum__c);
 
+        Assert.areEqual(  0, mbsMap.get(zeroBalanceMemberKey).CalculatedMemberBalance__c);
+        Assert.areEqual( 50, mbsMap.get(missMatchBalanceMemberKey).CalculatedMemberBalance__c);
+        Assert.areEqual(  0, mbsMap.get(negativeBalanceMemberKey).CalculatedMemberBalance__c);
+
         Assert.areEqual('Y', mbsMap.get(zeroBalanceMemberKey).BalanceMismatch__c);
         Assert.areEqual('Y', mbsMap.get(missMatchBalanceMemberKey).BalanceMismatch__c);
         Assert.areEqual('N', mbsMap.get(negativeBalanceMemberKey).BalanceMismatch__c);
@@ -111,5 +115,9 @@ public class TestMemberBalanceCheckBatchSchedule {
         Assert.areEqual('Y', mbsMap.get(zeroBalanceMemberKey).TotalPointsMismatch__c);
         Assert.areEqual('Y', mbsMap.get(missMatchBalanceMemberKey).TotalPointsMismatch__c);
         Assert.areEqual('Y', mbsMap.get(negativeBalanceMemberKey).TotalPointsMismatch__c);
+
+        Assert.areEqual('Y', mbsMap.get(zeroBalanceMemberKey).CalculatedMemberBalanceMismatch__c);
+        Assert.areEqual('Y', mbsMap.get(missMatchBalanceMemberKey).CalculatedMemberBalanceMismatch__c);
+        Assert.areEqual('N', mbsMap.get(negativeBalanceMemberKey).CalculatedMemberBalanceMismatch__c);
     }
 }

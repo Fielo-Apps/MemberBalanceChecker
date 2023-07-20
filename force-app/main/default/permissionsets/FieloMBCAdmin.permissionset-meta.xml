@@ -46,6 +46,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>MemberBalanceStatus__c.CalculatedMemberBalance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>MemberBalanceStatus__c.CalculatedMemberBalanceMismatch__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>MemberBalanceStatus__c.Currency__c</field>
         <readable>true</readable>
     </fieldPermissions>

@@ -23,7 +23,7 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
         if (String.isNotBlank(this.query)) {
             return Database.getQueryLocator(this.query, AccessLevel.SYSTEM_MODE);
         } else {
-            return Database.getQueryLocator('SELECT Id, FieloPLT__Program__c FROM FieloPLT__Member__c LIMIT 50000000', AccessLevel.SYSTEM_MODE);
+            return Database.getQueryLocator('SELECT Id, FieloPLT__Program__c FROM FieloPLT__Member__c ORDER BY FieloPLT__Program__c LIMIT 50000000', AccessLevel.SYSTEM_MODE);
         }
     }
 
@@ -66,6 +66,43 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                 AccessLevel.SYSTEM_MODE
             ));
 
+            String memberQuery =
+                'SELECT Id, '+
+                    '(' +
+                        'SELECT ' +
+                            'Id, ' +
+                            'FieloPLT__MemberBalance__c, ' +
+                            'FieloPLT__TotalPoints__c ' +
+                        'FROM FieloPLT__Points__r ' +
+                        'WHERE FieloPLT__PointType__c = :currencyId ORDER BY CreatedDate, Id LIMIT 1' +
+                    ') ' +
+                'FROM FieloPLT__Member__c WHERE Id =:memberIds';
+
+            Map<Id, Map<Id, Decimal>> firstMemberBalanceByCurrencyByMember = new Map<Id,Map<Id, Decimal>>();
+            Map<String, Object> bindMap = new Map<String, Object>{
+                'memberIds' => membersMap.keySet()
+            };
+
+            for (Id programId : programCurrenciesMap.keySet()) {
+                for (FieloPLT__PointType__c curr : programCurrenciesMap.get(programId).values()) {
+                    bindMap.put('currencyId',curr.Id);
+                    for (FieloPLT__Member__c m : (List<FieloPLT__Member__c>) Database.queryWithBinds(memberQuery,bindMap,AccessLevel.SYSTEM_MODE)) {
+                        Decimal firstBalance =
+                            m.FieloPLT__Points__r.isEmpty() ?
+                                0 :
+                                (m.FieloPLT__Points__r.get(0).FieloPLT__MemberBalance__c - m.FieloPLT__Points__r.get(0).FieloPLT__TotalPoints__c);
+
+                        if (firstMemberBalanceByCurrencyByMember.containsKey(m.Id)) {
+                            firstMemberBalanceByCurrencyByMember.get(m.Id).put(curr.Id, firstBalance);
+                        } else {
+                            firstMemberBalanceByCurrencyByMember.put(m.Id, new Map<Id, Decimal>{
+                                curr.Id => firstBalance
+                            });
+                        }
+                    }
+                }
+            }
+
             Map<Id, FieloPLT__Member__c> membersToAdjust = new Map<Id, FieloPLT__Member__c>();
             Map<Id, Set<String>> memberBalances = new Map<Id, Set<String>>();
             FieloPLT__Member__c member;
@@ -90,7 +127,7 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
             // Member.Balance and SUM(Member.Points.Balance) MISSMATCH
             Map<String, MemberBalanceStatus__c> monetaryStatus = new Map<String, MemberBalanceStatus__c>();
             String key;
-            Decimal balanceSum, totalPointsSum, memberBalance;
+            Decimal balanceSum, totalPointsSum, memberBalance, calcMemberBalance, firstBalance;
             for(AggregateResult pointsBalance : Database.query(aggregateQuery, AccessLevel.SYSTEM_MODE)) {
                 member = membersMap.get(String.valueOf(pointsBalance.get('memberId')));
                 balanceField = String.valueOf(pointsBalance.get('balanceField'));
@@ -100,6 +137,10 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                 balanceSum = currencyValue(pointsBalance.get('BalanceSum'), curr);
                 totalPointsSum  = currencyValue(pointsBalance.get('TotalPointsSum'), curr);
                 memberBalance = currencyValue(member.get(balanceField), curr);
+                firstBalance = firstMemberBalanceByCurrencyByMember?.get(member.Id)?.get(curr.Id);
+                if (firstBalance == null) firstBalance = 0.00;
+                calcMemberBalance =
+                    currencyValue(firstBalance + ((Decimal)pointsBalance.get('TotalPointsSum')), curr);
 
                 if (balanceSum != memberBalance || totalPointsSum != memberBalance) {
                     monetaryStatus.put(key, new MemberBalanceStatus__c(
@@ -107,6 +148,7 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                         Member__c = member.Id,
                         Currency__c = curr.Id,
                         MemberBalance__c = toFixed(member.get(balanceField), 2),
+                        CalculatedMemberBalance__c = toFixed(calcMemberBalance, 2),
                         PointsBalanceSum__c = toFixed(pointsBalance.get('BalanceSum'), 2),
                         PointsTotalPointsSum__c = toFixed(pointsBalance.get('TotalPointsSum'), 2),
                         BalanceMismatch__c =
@@ -114,6 +156,9 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                             'Y' : 'N',
                         TotalPointsMismatch__c =
                             totalPointsSum != memberBalance ?
+                            'Y' : 'N',
+                        CalculatedMemberBalanceMismatch__c =
+                            calcMemberBalance != memberBalance ?
                             'Y' : 'N'
                     ));
                 }
@@ -135,12 +180,17 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                     key = m.Id + '-' + curr.Id;
                     keys.add(key);
                     balanceField = curr.FieloPLT__MemberBalanceField__c;
+                    firstBalance = firstMemberBalanceByCurrencyByMember?.get(m.Id)?.get(curr.Id);
+                    if (firstBalance == null) firstBalance = 0.00;
+                    calcMemberBalance =
+                        currencyValue(firstBalance, curr);
                     if (memberBalances.containsKey(m.Id) && memberBalances?.get(m.Id)?.contains(curr.FieloPLT__MemberBalanceField__c) == false || !memberBalances.containsKey(m.Id)){
                         monetaryStatus.put(key, new MemberBalanceStatus__c(
                             ExternalId__c = key,
                             Member__c = m.Id,
                             Currency__c = curr.Id,
                             MemberBalance__c = toFixed(m.get(balanceField), 2),
+                            CalculatedMemberBalance__c = toFixed(calcMemberBalance, 2),
                             PointsBalanceSum__c = toFixed(0, 2),
                             PointsTotalPointsSum__c = toFixed(0, 2),
                             BalanceMismatch__c =
@@ -150,7 +200,10 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                             TotalPointsMismatch__c =
                                 toFixed(m.get(balanceField), 2) != toFixed(0, 2) ?
                                 'Y' :
-                                'N'
+                                'N',
+                            CalculatedMemberBalanceMismatch__c =
+                                toFixed(m.get(balanceField), 2) != calcMemberBalance ?
+                                'Y' : 'N'
                         ));
                     }
                 }

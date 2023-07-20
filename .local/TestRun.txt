@@ -2,23 +2,22 @@
 NAME                 VALUE               
 ───────────────────  ────────────────────
 Outcome              Passed              
-Tests Ran            2                   
+Tests Ran            1                   
 Pass Rate            100%                
 Fail Rate            0%                  
 Skip Rate            0%                  
 Test Run Id                              
-Test Execution Time  3779 ms             
+Test Execution Time  7097 ms             
 Org Id               00D88000000Pk2rEAC  
 Username             devtiago@mbc-001.org
-Org Wide Coverage    43%                 
+Org Wide Coverage    62%                 
 
 
 === Test Results
-TEST NAME                            OUTCOME  MESSAGE  RUNTIME (MS)
-───────────────────────────────────  ───────  ───────  ────────────
-FieloMBC__TestErrors.insertDBErrors  Pass              3662        
-FieloMBC__TestErrors.insertErrors    Pass              75          
+TEST NAME                                                    OUTCOME  MESSAGE  RUNTIME (MS)
+───────────────────────────────────────────────────────────  ───────  ───────  ────────────
+FieloMBC__TestMemberBalanceCheckBatchSchedule.checkBalances  Pass              6990        
 
 
 === Apex Code Coverage by Class
-Execution time was 7 seconds.
+Execution time was 14 seconds.
