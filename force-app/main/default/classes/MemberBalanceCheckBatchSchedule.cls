@@ -23,7 +23,7 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
         if (String.isNotBlank(this.query)) {
             return Database.getQueryLocator(this.query, AccessLevel.SYSTEM_MODE);
         } else {
-            return Database.getQueryLocator('SELECT Id, FieloPLT__Program__c FROM FieloPLT__Member__c ORDER BY FieloPLT__Program__c LIMIT 50000000', AccessLevel.SYSTEM_MODE);
+            return Database.getQueryLocator('SELECT Id, FieloPLT__Program__c FROM FieloPLT__Member__c LIMIT 50000000', AccessLevel.SYSTEM_MODE);
         }
     }
 
