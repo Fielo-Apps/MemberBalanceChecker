@@ -19,3 +19,14 @@ This Object has 6 important fields:
 | Field | Description |
 | :---: | :---------: |
 | Member | (Lookup) Id of the member |
+| Currency | (Lookup) Id of currency |
+| Member Balance | (Decimal) Current Member Balance |
+| Points Balance Sum | (Decimal) Sum of all points Balance field of the member |
+| Points Total Sum | (Decimal) Sum of all points Total Points field of the member |
+| Balance Mismatch | (Flag) Y if there is a mismatch between Member Balance and Points Balance Sum, N otherwise |
+| Total Points Mismatch | (Flag) Y if there is a mismatch between Member Balance and Points Total Points Sum, N otherwise |
+
+## Which Mismatch flag should You use?
+
+Total Points Mismatch if you have the entire points history in the database and you have negative accruals or not
+Balance Mismatch if you don't have negative accruals
