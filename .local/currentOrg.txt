@@ -1,0 +1,15 @@
+
+=== User Description
+
+ key          label
+ ──────────── ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ Username     devtiago@mbc-001.org
+ Profile Name System Administrator
+ Id           005880000028vPnAAI
+ Org Id       00D88000000Pk2rEAC
+ Access Token 00D88000000Pk2r!AQEAQNB9Dcrx8m7gwY055tBBc7Xmz9VyNgtScx68g_FogsjzNFg3WTZSRSP0r17ePLYtoD8eNBo_U1bewsdcABdBBthBxfF.
+ Instance Url https://energy-enterprise-3310-dev-ed.my.salesforce.com
+ Login Url    https://energy-enterprise-3310-dev-ed.my.salesforce.com/
+ Alias        mbc-001
+ Password     cjYoznrr8sra]
+Org creation took 51 seconds.

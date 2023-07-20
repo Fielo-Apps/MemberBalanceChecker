@@ -1,0 +1,14 @@
+=== Package Version Create Request
+
+ Name                          Value
+ ───────────────────────────── ─────────────────────────────────────────────────────────────────────────────────
+ ID                            08cHY00000001AlYAI
+ Status                        Success
+ Package Id                    0HoHY000000000u0AA
+ Package Version Id            05iHY000000017XYAQ
+ Subscriber Package Version Id 04tHY0000000VfoYAE
+ Tag
+ Branch
+ Created Date                  2023-07-12 17:44
+ Installation URL              https://login.salesforce.com/packaging/installPackage.apexp?p0=04tHY0000000VfoYAE
+ Created By                    0051R00000IDNeMQAX

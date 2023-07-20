@@ -1,0 +1,114 @@
+<template>
+    <lightning-card title={label.MemberBalanceStatus} icon-name="utility:settings">
+        <div slot="actions">
+            <lightning-button-group>
+                <lightning-button label={label.Refresh} onclick={handleRefreshClick}></lightning-button>
+                <lightning-button label={label.RunFailed} onclick={handleRunFailedClick}></lightning-button>
+                <lightning-button label={label.Run} onclick={handleRunClick}></lightning-button>
+            </lightning-button-group>
+        </div>
+
+        <lightning-layout class="slds-p-around_x-medium slds-border_top">
+            <lightning-layout-item size="12" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-formatted-text value={label.LastExecutionTitle}></lightning-formatted-text>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout class="slds-p-around_x-medium" horizontal-align="spread">
+            <lightning-layout-item size="2" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={label.SubmittedOn}></lightning-formatted-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-date-time
+                            value={record.submittedOn}
+                            hour="2-digit"
+                            minute="2-digit"
+                            hour12="false"
+                            day="2-digit"
+                            month="2-digit"
+                            year="numeric"></lightning-formatted-date-time>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="2" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={label.CompletedOn}></lightning-formatted-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-date-time
+                            value={record.completedOn}
+                            hour="2-digit"
+                            minute="2-digit"
+                            hour12="false"
+                            day="2-digit"
+                            month="2-digit"
+                            year="numeric"></lightning-formatted-date-time>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={label.Progress}></lightning-formatted-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={record.progress}></lightning-formatted-text>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={label.TotalJobItems}></lightning-formatted-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-number value={record.totalJobItems}></lightning-formatted-number>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={label.JobItemsProcessed}></lightning-formatted-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-number value={record.jobItemsProcessed}></lightning-formatted-number>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={label.NumberOfErrors}></lightning-formatted-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-number value={record.numberOfErrors}></lightning-formatted-number>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="2" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={label.ElapsedTime}></lightning-formatted-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={record.elapsedTime}></lightning-formatted-text>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="2" class="slds-p-horizontal_medium slds-p-top_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={label.ETA}></lightning-formatted-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-formatted-text value={record.eta}></lightning-formatted-text>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

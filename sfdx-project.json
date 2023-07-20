@@ -1,0 +1,39 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "FieloMBC",
+      "versionName": "FieloMBC v1.0",
+      "versionDescription": "Fielo Member Balance Checker",
+      "versionNumber": "1.NEXT.0.0",
+      "ancestorVersion": "HIGHEST",
+      "definitionFile": "config/project-scratch-def.json",
+      "apexTestAccess": {
+        "permissionSets": [
+          "FieloMBCAdmin"
+        ]
+      },
+      "dependencies": [
+        {
+          "package": "FieloPLT@2.114.61"
+        }
+      ]
+    }
+  ],
+  "name": "FieloMBC",
+  "namespace": "FieloMBC",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "58.0",
+  "packageAliases": {
+    "FieloPLT@2.114.61": "04t2J000000MDhq",
+    "FieloMBC": "0HoHY000000000u0AA",
+    "FieloMBC@1.1.0-1": "04tHY0000000VftYAE",
+    "FieloMBC@1.2.0-1": "04tHY0000000VfyYAE",
+    "FieloMBC@1.3.0-1": "04tHY0000000Vg3YAE",
+    "FieloMBC@1.4.0-1": "04tHY0000000VgXYAU",
+    "FieloMBC@1.5.0-1": "04tHY0000000VgcYAE",
+    "FieloMBC@1.6.0-1": "04tHY0000000VghYAE",
+    "FieloMBC@1.7.0-1": "04tHY0000000VgmYAE"
+  }
+}

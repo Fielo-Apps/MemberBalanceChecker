@@ -1,0 +1,26 @@
+=== Test Summary
+NAME                 VALUE               
+───────────────────  ────────────────────
+Outcome              Passed              
+Tests Ran            7                   
+Pass Rate            100%                
+Fail Rate            0%                  
+Skip Rate            0%                  
+Test Run Id          70788000007KK4z     
+Test Execution Time  19054 ms            
+Org Id               00D88000000Pk2rEAC  
+Username             devtiago@mbc-001.org
+
+
+=== Test Results
+TEST NAME                                                    OUTCOME  MESSAGE  RUNTIME (MS)
+───────────────────────────────────────────────────────────  ───────  ───────  ────────────
+FieloMBC__TestMemberBalanceCheckBatchSchedule.checkBalances  Pass              5731        
+FieloMBC__TestErrors.insertDBErrors                          Pass              5725        
+FieloMBC__TestErrors.insertErrors                            Pass              60          
+FieloMBC__TestCreateFailedMembers.createFailedMembers        Pass              6961        
+FieloMBC__TestMemberBalanceCheckController.getRecord         Pass              212         
+FieloMBC__TestMemberBalanceCheckController.run               Pass              244         
+FieloMBC__TestMemberBalanceCheckController.runFailed         Pass              121         
+
+Execution time was 122 seconds.

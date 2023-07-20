@@ -1,0 +1,24 @@
+=== Test Summary
+NAME                 VALUE               
+───────────────────  ────────────────────
+Outcome              Passed              
+Tests Ran            2                   
+Pass Rate            100%                
+Fail Rate            0%                  
+Skip Rate            0%                  
+Test Run Id                              
+Test Execution Time  3779 ms             
+Org Id               00D88000000Pk2rEAC  
+Username             devtiago@mbc-001.org
+Org Wide Coverage    43%                 
+
+
+=== Test Results
+TEST NAME                            OUTCOME  MESSAGE  RUNTIME (MS)
+───────────────────────────────────  ───────  ───────  ────────────
+FieloMBC__TestErrors.insertDBErrors  Pass              3662        
+FieloMBC__TestErrors.insertErrors    Pass              75          
+
+
+=== Apex Code Coverage by Class
+Execution time was 7 seconds.

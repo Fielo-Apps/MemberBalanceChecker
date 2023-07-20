@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>MemberBalanceStatus</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>MemberBalanceStatus</shortDescription>
+        <value>Member Balance Status</value>
+    </labels>
+    <labels>
+        <fullName>SubmittedOn</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SubmittedOn</shortDescription>
+        <value>Submitted On</value>
+    </labels>
+    <labels>
+        <fullName>Progress</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Progress</shortDescription>
+        <value>Progress</value>
+    </labels>
+    <labels>
+        <fullName>TotalJobItems</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TotalJobItems</shortDescription>
+        <value>Total Items</value>
+    </labels>
+    <labels>
+        <fullName>JobItemsProcessed</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>JobItemsProcessed</shortDescription>
+        <value>Processed</value>
+    </labels>
+    <labels>
+        <fullName>NumberOfErrors</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NumberOfErrors</shortDescription>
+        <value>Errors</value>
+    </labels>
+    <labels>
+        <fullName>ElapsedTime</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ElapsedTime</shortDescription>
+        <value>Elapsed Time</value>
+    </labels>
+    <labels>
+        <fullName>ETA</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ETA</shortDescription>
+        <value>ETA</value>
+    </labels>
+    <labels>
+        <fullName>LastExecutionTitle</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LastExecutionTitle</shortDescription>
+        <value>Last Batch Execution Status</value>
+    </labels>
+    <labels>
+        <fullName>Run</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Run</shortDescription>
+        <value>Run</value>
+    </labels>
+    <labels>
+        <fullName>RunFailed</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RunFailed</shortDescription>
+        <value>Run Failed</value>
+    </labels>
+    <labels>
+        <fullName>Refresh</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Refresh</shortDescription>
+        <value>Refresh</value>
+    </labels>
+    <labels>
+        <fullName>CompletedOn</fullName>
+        <categories>bMemberBalanceCheckStatus.js</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CompletedOn</shortDescription>
+        <value>Completed On</value>
+    </labels>
+</CustomLabels>
