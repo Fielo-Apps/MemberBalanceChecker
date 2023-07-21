@@ -35,6 +35,6 @@ This Object has the following fields:
 
 ## Which Mismatch flag should You use?
 
-- **Total Points Mismatch** if you have the entire points history in the database and you have negative accruals or not
+- **Total Points Mismatch** if you have the entire points history in the database
 - **Balance Mismatch** if you don't have negative accruals
-- **Calculated Member Balance** if you want to check if all points were summed correctly
+- **Calculated Member Balance** if you want to check if member balance was rolled up correctly
