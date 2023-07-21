@@ -28,7 +28,7 @@ This Object has the following fields:
 | Calculated Member Balance | (Decimal) Member Balance prior to all points plus "Points Total Sum" |
 | Points Balance Sum | (Decimal) Sum of all point records Balance field of the member |
 | Points Total Sum | (Decimal) Sum of all point records Total Points field of the member |
-| Calculated Member Balance | (Flag) Y if there is a mismatch between Member Balance and Calculated Member Balance, N otherwise |
+| Calculated Member Balance Mismatch | (Flag) Y if there is a mismatch between Member Balance and Calculated Member Balance, N otherwise |
 | Balance Mismatch | (Flag) Y if there is a mismatch between Member Balance and Points Balance Sum, N otherwise |
 | Total Points Mismatch | (Flag) Y if there is a mismatch between Member Balance and Points Total Points Sum, N otherwise |
 

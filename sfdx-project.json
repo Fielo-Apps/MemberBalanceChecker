@@ -16,7 +16,7 @@
       },
       "dependencies": [
         {
-          "package": "FieloPLT@2.114.61"
+          "package": "FieloPLT@2.56.23"
         }
       ]
     }
@@ -26,7 +26,7 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "58.0",
   "packageAliases": {
-    "FieloPLT@2.114.61": "04t2J000000MDhq",
+    "FieloPLT@2.56.23": "04t2J000000V9dH",
     "FieloMBC": "0HoHY000000000u0AA",
     "FieloMBC@1.1.0-1": "04tHY0000000VftYAE",
     "FieloMBC@1.2.0-1": "04tHY0000000VfyYAE",
