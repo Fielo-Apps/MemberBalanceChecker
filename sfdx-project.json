@@ -16,7 +16,7 @@
       },
       "dependencies": [
         {
-          "package": "FieloPLT@2.56.23"
+          "package": "FieloPLT@2.96.3"
         }
       ]
     }
@@ -26,7 +26,7 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "58.0",
   "packageAliases": {
-    "FieloPLT@2.56.23": "04t2J000000V9dH",
+    "FieloPLT@2.96.3": "04t2J0000003vOK",
     "FieloMBC": "0HoHY000000000u0AA",
     "FieloMBC@1.1.0-1": "04tHY0000000VftYAE",
     "FieloMBC@1.2.0-1": "04tHY0000000VfyYAE",
@@ -36,6 +36,7 @@
     "FieloMBC@1.6.0-1": "04tHY0000000VghYAE",
     "FieloMBC@1.7.0-1": "04tHY0000000VgmYAE",
     "FieloMBC@1.8.0-1": "04tHY0000000VjWYAU",
-    "FieloMBC@1.9.0-1": "04tHY0000000VjbYAE"
+    "FieloMBC@1.9.0-1": "04tHY0000000VjbYAE",
+    "FieloMBC@1.10.0-1": "04tHY0000000VjvYAE"
   }
 }

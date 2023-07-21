@@ -4,7 +4,7 @@ Package to detect member balance inconsistency.
 
 ## Requirements
 
-- FieloPLT 2.114.61 or newer.
+- FieloPLT 2.96.3 or newer.
 
 ## How Do You Run FieloMBC?
 
