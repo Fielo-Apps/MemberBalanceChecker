@@ -14,7 +14,7 @@ Package to detect member balance inconsistency.
 - Click on Run
 ![Alt text](image-1.png)
 - Wait for it to finish
-- If the package is no longer needed, you can uninstall it in `Setup > Installed Packages`
+- If the package is no longer needed, unassign the permission set and uninstall it in `Setup > Installed Packages`
 
 ## Reading the Results
 
