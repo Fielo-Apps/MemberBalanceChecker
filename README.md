@@ -8,12 +8,13 @@ Package to detect member balance inconsistency.
 
 ## How Do You Run FieloMBC?
 
-- Install the latest version: [FieloMBC 1.9.0](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tHY0000000VjbYAE)
+- Install the latest version: [FieloMBC 1.10.0](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tHY0000000VjvYAE)
 - Assign the PermissionSet FieloMBCAdmin to your user
-- Access in LEX > App Launcher > FieloMBC > Home
+- Access in `Lightning Experience > App Launcher > FieloMBC > Home`
 - Click on Run
 ![Alt text](image-1.png)
 - Wait for it to finish
+- If the package is no longer needed, you can uninstall it in `Setup > Installed Packages`
 
 ## Reading the Results
 
