@@ -38,11 +38,14 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
 
             Map<Id, Map<Id,FieloPLT__PointType__c>> programCurrenciesMap = new Map<Id, Map<Id,FieloPLT__PointType__c>>();
 
+            Boolean hasDecimalsField =
+                SObjectType.FieloPLT__PointType__c.fields.getMap().containsKey('FieloPLT__DecimalsNumber__c');
+
             String currencyQuery =
                 'SELECT ' +
                     'FieloPLT__Program__c, ' +
-                    'FieloPLT__PointType__r.FieloPLT__MemberBalanceField__c, ' +
-                    'FieloPLT__PointType__r.FieloPLT__DecimalsNumber__c ' +
+                    'FieloPLT__PointType__r.FieloPLT__MemberBalanceField__c ' +
+                    (hasDecimalsField ? ',FieloPLT__PointType__r.FieloPLT__DecimalsNumber__c ' : '') +
                 'FROM FieloPLT__ProgramPointType__c ' +
                 'WHERE FieloPLT__Program__c IN :programIds';
 
@@ -132,15 +135,22 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                 member = membersMap.get(String.valueOf(pointsBalance.get('memberId')));
                 balanceField = String.valueOf(pointsBalance.get('balanceField'));
                 FieloPLT__PointType__c curr = programCurrenciesMap.get(member.FieloPLT__Program__c).get(String.valueOf(pointsBalance.get('FieloPLT__PointType__c')));
-                currencyScale = curr.FieloPLT__DecimalsNumber__c.intValue();
+                currencyScale = ((Decimal)curr.get('FieloPLT__DecimalsNumber__c')).intValue();
                 key = member.Id + '-' + curr.Id;
-                balanceSum = currencyValue(pointsBalance.get('BalanceSum'), curr);
-                totalPointsSum  = currencyValue(pointsBalance.get('TotalPointsSum'), curr);
-                memberBalance = currencyValue(member.get(balanceField), curr);
+                balanceSum = hasDecimalsField ?
+                    currencyValue(pointsBalance.get('BalanceSum'), curr):
+                    toFixed(pointsBalance.get('BalanceSum'), 2);
+                totalPointsSum = hasDecimalsField ?
+                    currencyValue(pointsBalance.get('TotalPointsSum'), curr):
+                    toFixed(pointsBalance.get('TotalPointsSum'), 2);
+                memberBalance = hasDecimalsField ?
+                    currencyValue(member.get(balanceField), curr):
+                    toFixed(member.get(balanceField), 2);
                 firstBalance = firstMemberBalanceByCurrencyByMember?.get(member.Id)?.get(curr.Id);
                 if (firstBalance == null) firstBalance = 0.00;
-                calcMemberBalance =
-                    currencyValue(firstBalance + ((Decimal)pointsBalance.get('TotalPointsSum')), curr);
+                calcMemberBalance = hasDecimalsField ?
+                    currencyValue(firstBalance + ((Decimal)pointsBalance.get('TotalPointsSum')), curr):
+                    toFixed(firstBalance + ((Decimal)pointsBalance.get('TotalPointsSum')), 2);
 
                 if (balanceSum != memberBalance || totalPointsSum != memberBalance) {
                     monetaryStatus.put(key, new MemberBalanceStatus__c(
@@ -182,8 +192,9 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                     balanceField = curr.FieloPLT__MemberBalanceField__c;
                     firstBalance = firstMemberBalanceByCurrencyByMember?.get(m.Id)?.get(curr.Id);
                     if (firstBalance == null) firstBalance = 0.00;
-                    calcMemberBalance =
-                        currencyValue(firstBalance, curr);
+                    calcMemberBalance = hasDecimalsField ?
+                        currencyValue(firstBalance, curr):
+                        toFixed(firstBalance, 2);
                     if (memberBalances.containsKey(m.Id) && memberBalances?.get(m.Id)?.contains(curr.FieloPLT__MemberBalanceField__c) == false || !memberBalances.containsKey(m.Id)){
                         monetaryStatus.put(key, new MemberBalanceStatus__c(
                             ExternalId__c = key,
@@ -247,7 +258,7 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
     }
 
     public static Decimal currencyValue(Object value, FieloPLT__PointType__c curr) {
-        return ((Decimal)(value != null ? value : 0.00)).setScale(curr.FieloPLT__DecimalsNumber__c.intValue());
+        return ((Decimal)(value != null ? value : 0.00)).setScale(((Decimal)curr..get('FieloPLT__DecimalsNumber__c')).intValue());
     }
 
     public static Decimal toFixed(Object value, Integer places) {
