@@ -258,7 +258,7 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
     }
 
     public static Decimal currencyValue(Object value, FieloPLT__PointType__c curr) {
-        return ((Decimal)(value != null ? value : 0.00)).setScale(((Decimal)curr..get('FieloPLT__DecimalsNumber__c')).intValue());
+        return ((Decimal)(value != null ? value : 0.00)).setScale(((Decimal)curr.get('FieloPLT__DecimalsNumber__c')).intValue());
     }
 
     public static Decimal toFixed(Object value, Integer places) {
