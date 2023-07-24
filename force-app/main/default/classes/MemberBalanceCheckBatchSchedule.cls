@@ -111,7 +111,6 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
             FieloPLT__Member__c member;
             String balanceField;
             List<FieloPLT__PointType__c> currencies;
-            Integer currencyScale;
 
             String aggregateQuery =
                 'SELECT ' +
@@ -135,7 +134,6 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                 member = membersMap.get(String.valueOf(pointsBalance.get('memberId')));
                 balanceField = String.valueOf(pointsBalance.get('balanceField'));
                 FieloPLT__PointType__c curr = programCurrenciesMap.get(member.FieloPLT__Program__c).get(String.valueOf(pointsBalance.get('FieloPLT__PointType__c')));
-                currencyScale = ((Decimal)curr.get('FieloPLT__DecimalsNumber__c')).intValue();
                 key = member.Id + '-' + curr.Id;
                 balanceSum = hasDecimalsField ?
                     currencyValue(pointsBalance.get('BalanceSum'), curr):
