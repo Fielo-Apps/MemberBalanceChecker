@@ -22,7 +22,7 @@ After the FieloMBC process finishes, the results will be saved in the object `Fi
 
 This Object has the following fields:
 | Field | Description |
-| :---- | ----------- |
+| :---- | :---------- |
 | Member | (Lookup) Id of the member |
 | Currency | (Lookup) Id of currency |
 | Member Balance | (Decimal) Current Member Balance |
