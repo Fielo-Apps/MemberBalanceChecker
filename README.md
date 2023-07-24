@@ -38,3 +38,20 @@ This Object has the following fields:
 - **Total Points Mismatch** if you have the entire points history in the database
 - **Balance Mismatch** if you don't have negative accruals
 - **Calculated Member Balance** if you want to check if member balance was rolled up correctly
+
+## Getting the results
+Currently we don't have the results displayed in a fancy way in the UI. One must go and query the `FieloMBC__MemberBalanceStatus__c`.
+```SQL
+SELECT
+    FieloMBC__Member__c,
+    FieloMBC__Member__r.Name,
+    FieloMBC__Currency__r.Name,
+    FieloMBC__MemberBalance__c,
+    FieloMBC__CalculatedMemberBalance__c,
+    FieloMBC__PointsBalanceSum__c,
+    FieloMBC__BalanceMismatch__c,
+    FieloMBC__CalculatedMemberBalanceMismatch__c
+FROM FieloMBC__MemberBalanceStatus__c
+WHERE FieloMBC__BalanceMismatch__c = 'Y'
+```
+In this example we are getting all the members that have a Balance mismatch `FieloMBC__BalanceMismatch__c = 'Y'`
