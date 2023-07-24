@@ -55,3 +55,10 @@ FROM FieloMBC__MemberBalanceStatus__c
 WHERE FieloMBC__BalanceMismatch__c = 'Y'
 ```
 In this example we are getting all the members that have a Balance mismatch `FieloMBC__BalanceMismatch__c = 'Y'`
+
+## Searching for issues
+Failures may happen, like if the environment is heavily used we can face some `Unable do lock row` issues. One can check what happened in the object `FieloMBC__FailedMembers__c`
+```SQL
+SELECT FieloMBC__Member__c, FieloMBC__Message__c FROM FieloMBC__FailedMembers__c
+```
+if any rows are returned, one must go to the app again and click on `Run failed`
