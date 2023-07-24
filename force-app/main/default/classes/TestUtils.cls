@@ -45,7 +45,6 @@ public class TestUtils {
 				new FieloPLT__Program__c(
 					Name = basename + x,
 					FieloPLT__OnlineTransactionProcessing__c = true,
-					FieloPLT__CapAdjustmentTransactions__c = true,
 					FieloPLT__ExternalId__c = getExternalId()
 				)
 			);
