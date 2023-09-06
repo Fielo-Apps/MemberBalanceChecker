@@ -93,7 +93,13 @@ global with sharing class MemberBalanceCheckBatchSchedule implements Database.Ba
                         Decimal firstBalance =
                             m.FieloPLT__Points__r.isEmpty() ?
                                 0 :
-                                (m.FieloPLT__Points__r.get(0).FieloPLT__MemberBalance__c - m.FieloPLT__Points__r.get(0).FieloPLT__TotalPoints__c);
+                                (
+                                    (
+                                        m.FieloPLT__Points__r.get(0).FieloPLT__MemberBalance__c != null ?
+                                        m.FieloPLT__Points__r.get(0).FieloPLT__MemberBalance__c :
+                                        0
+                                    ) - m.FieloPLT__Points__r.get(0).FieloPLT__TotalPoints__c
+                                );
 
                         if (firstMemberBalanceByCurrencyByMember.containsKey(m.Id)) {
                             firstMemberBalanceByCurrencyByMember.get(m.Id).put(curr.Id, firstBalance);
